@@ -80,3 +80,25 @@ def customer_can_afford_pet(customer, new_pet)
 #   # end
   return false
 end
+
+def sell_pet_to_customer(pet_shop, pet, customer)
+  # for pet in pet_shop[:pets]
+  if customer[:cash] >= pet[:price]
+customer[:pets].push(pet)
+    pet_shop[:admin][:pets_sold] += 1
+    customer[:cash] -= pet[:price]
+    pet_shop[:admin][:total_cash] += pet[:price]
+  end
+end
+
+# def test_sell_pet_to_customer__pet_found
+#   customer = @customers[0]
+#   pet = find_pet_by_name(@pet_shop,"Arthur")
+#
+#   sell_pet_to_customer(@pet_shop, pet, customer)
+#
+#   assert_equal(1, customer_pet_count(customer))
+#   assert_equal(1, pets_sold(@pet_shop))
+#   assert_equal(100, customer_cash(customer))
+#   assert_equal(1900, total_cash(@pet_shop))
+# end
